@@ -1,8 +1,12 @@
 package com.iwinner.rms.dao;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.iwinner.rms.constants.RMSConstants;
 import com.iwinner.rms.expections.DaoException;
 import com.iwinner.rms.model.Audit;
 import com.iwinner.rms.utils.HibernateUtils;
@@ -12,11 +16,18 @@ public class AuditStartUpDaoImpl implements AuditStartUpDaoIF {
 		Session session = HibernateUtils.getSession();
 	    Transaction transaction=session.beginTransaction();
 	    transaction.begin();
-	    aditInfo.setId(1);
-	    session.save(aditInfo);
-	    transaction.commit();
-	}
-	/*
+	    Integer INCREMENT_ID= getMaxId();
+	    if(INCREMENT_ID!=null){
+		    aditInfo.setId(INCREMENT_ID+RMSConstants.ADD_ONE);
+		    session.save(aditInfo);
+		    transaction.commit();
+	    }else{
+	         //Initial value saving into the 
+	    	aditInfo.setId(RMSConstants.ADD_ONE);
+		    session.save(aditInfo);
+		    transaction.commit();
+	    	}
+	    }
 
 	public  Integer getMaxId()throws DaoException{
 		Session session=HibernateUtils.getSession();
@@ -25,5 +36,4 @@ public class AuditStartUpDaoImpl implements AuditStartUpDaoIF {
 		Integer maxValue=listOfMax.get(0);
 		return maxValue;
 	}
-*/
 }

@@ -1,0 +1,22 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.iwinner.irpc.model.Vistior" table="VISTIOR">
+		<id name="zoneId" type="java.lang.Integer">
+			<generator class="increment" />
+		</id>
+		<property name="HOSTNAME" type="java.lang.String" />
+		<property name="IpAddress" type="java.lang.String"></property>
+		<property name="Browser" type="java.lang.String" />
+		<property name="UserAgent" type="java.lang.String"></property>
+		<property name="VISTORRANID" type="java.lang.String" />
+		<property name="OSName" type="java.lang.String"></property>
+		<property name="ViewDate" type="java.sql.Date" />
+		<property name="IpAddress" type="java.lang.String"></property>
+		<property name="HOSTNAME" type="java.lang.String" />
+		<property name="IpAddress" type="java.lang.String"></property>
+
+	</class>
+
+</hibernate-mapping>

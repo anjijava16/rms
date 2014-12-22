@@ -38,7 +38,7 @@ function validateForm(f)
 <img alt="ChangingWorlds" title="ChangingWorlds Logo" src="images/cw_logo.jpg">
 </div>
  -->
-<form name="login_form" onSubmit="javascript:return checkFormSubmission(this, 'validateForm');" method="post" action="dailyLogin.do">
+<form name="login_form" onSubmit="javascript:return checkFormSubmission(this, 'validateForm');" method="post" action="login.do">
 <input type="hidden" name="cat" value="login">
 <input type="hidden" name="url" value="">
 <table align="center" width="900" border="0" cellspacing="0" cellpadding="1" >

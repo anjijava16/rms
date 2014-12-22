@@ -28,20 +28,20 @@ public class IdGenerator {
 	{
 		Random random=new Random();
 		int i=random.nextInt();
-		System.out.println(i);
+		//System.out.println(i);
 		if(i<0)
 		{
 			i=-(i);
 		}
 		if(i<1000)
-			i=i+1000;
-		while(i>9999)
+			i=i+10000;
+		while(i>99999)
 		{
 			i=i/10;
 		}
 		return i+"";
 	}
 public static void main(String[] args) {
-	randId();
+	System.out.println(randId());
 }
 }

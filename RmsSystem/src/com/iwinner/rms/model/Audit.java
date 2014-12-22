@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "AUDIT")
+@Table(name = "AUDIT_INFO")
 @Entity
 public class Audit implements java.io.Serializable {
 

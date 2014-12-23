@@ -5,5 +5,5 @@ import com.iwinner.rms.model.Users;
 
 public interface LoginDaoIF {
 public boolean loginVerify()throws DaoException;
-public Users getUserDetails()throws DaoException;
+public Users getUserDetails(String username)throws DaoException;
 }

@@ -24,6 +24,8 @@
         
    <!-- <mapping resource="/com/st/mapping/Floor.hbm.xml"/> -->
    <mapping class="com.iwinner.rms.model.Audit"></mapping>
+   <mapping class="com.iwinner.rms.model.Users"></mapping>
+   <mapping class="com.iwinner.rms.model.ItemInfo"></mapping>
     </session-factory>
 
 </hibernate-configuration>

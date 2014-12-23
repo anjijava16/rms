@@ -51,6 +51,7 @@ public class RegisterDaoImpl implements RegisterDaoIF {
 		Date date=new Date();
 		return date;
 	}
+	
 	public static void main(String[] args) {
 		RegisterDaoImpl rD=new RegisterDaoImpl();
 		try {
@@ -61,4 +62,5 @@ public class RegisterDaoImpl implements RegisterDaoIF {
 			e.printStackTrace();
 		}
 	}
+	
 }

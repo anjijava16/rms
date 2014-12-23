@@ -691,33 +691,42 @@ function getPageOffsetTop(el) {
 onmouseover="buttonMouseover(event, 'homeNewMenu');">Home </a>
 
 <a class="menuButton"    href=""    onclick="return buttonClick(event, 'userInfoMenu');" 
-onmouseover="buttonMouseover(event, 'userInfoMenu');">Expense Information</a>
+onmouseover="buttonMouseover(event, 'userInfoMenu');">UserInformation</a>
 
-<a class="menuButton"    href=""    onclick="return buttonClick(event, 'customerInfo');" 
-onmouseover="buttonMouseover(event, 'customerInfo');">Customer</a>
-<a class="menuButton"    href=""    onclick="return buttonClick(event, 'customerGroupMenu');" 
-onmouseover="buttonMouseover(event, 'customerGroupMenu');">CustomerGroup</a>
+<a class="menuButton"    href=""    onclick="return buttonClick(event, 'expenseInfo');" 
+onmouseover="buttonMouseover(event, 'expenseInfo');">Expense Information</a>
+
 <a class="menuButton"    href=""    onclick="return buttonClick(event, 'taskMenu');" 
 onmouseover="buttonMouseover(event, 'taskMenu');">Tasks</a>
 <a class="menuButton"  href=""  onclick="return buttonClick(event, 'reportMenu');"
     onmouseover="buttonMouseover(event, 'reportMenu');">Report System</a>
  <a class="menuButton"
     href=""
-    onclick="return buttonClick(event, 'logoutMenu');"
-    onmouseover="buttonMouseover(event, 'logoutMenu');"
+    onclick="return buttonClick(event, 'contactUS');"
+    onmouseover="buttonMouseover(event, 'contactUS');"
 >ContactsUs</a>
+
 <a class="menuButton"
     href=""
     onclick="return buttonClick(event, 'profileMenu');"
     onmouseover="buttonMouseover(event, 'profileMenu');"
 >Profile</a>
+
 <a class="menuButton"
     href=""
     onclick="return buttonClick(event, 'logoutMenu');"
     onmouseover="buttonMouseover(event, 'logoutMenu');"
->Logout</a>
+>
+Logout</a>
 </div>
 <!-- Main menus. -->
+<div id=contactUS class="menu"
+     onmouseover="menuMouseover(event)">
+<a class="menuItem" href="contactUs.do">ContactUS</a>
+
+</div>
+
+
 <div id="homeMenu" class="menu"
      onmouseover="menuMouseover(event)">
 <a class="menuItem" href="newUser.action">Add Share</a>
@@ -756,46 +765,32 @@ onmouseover="buttonMouseover(event, 'taskMenu');">Tasks</a>
 <a class="menuItem" href="<%=request.getContextPath()%>/viewshares.spring">SaveEditTier</a>
 </div>
 
-<div id="customerInfo" class="menu"
+<div id="expenseInfo" class="menu"
      onmouseover="menuMouseover(event)">
-<a class="menuItem" href="<%= request.getContextPath()%>/expense/addExpense.jsp">CustomerView</a>
-<a class="menuItem" href="createCustomerForm.action">CreateCustomer</a>
-<a class="menuItem" href="<%= request.getContextPath()%>/expense/addExpense.jsp">SearchCustomer</a>
-<a class="menuItem" href="<%= request.getContextPath()%>/expense/addExpense.jsp">ModifyCustomer</a>
-<a class="menuItem" href="<%= request.getContextPath()%>/expense/addExpense.jsp">UpdateCustomer</a>
-<a class="menuItem" href="blank.html">ImportCustomer</a>
-<a class="menuItem" href="blank.html">DeleteCustomer</a>
-<a class="menuItem" href="<%= request.getContextPath()%>/getallexpense.spring">ImportedListView</a>
-<a class="menuItem" href="blank.html">CustomerDeviceMapping</a>
-<a class="menuItem" href="<%= request.getContextPath()%>/getallexpense.spring">ChooseDevice</a>
+<a class="menuItem" href="<%= request.getContextPath()%>/expense/addExpense.jsp">Add ITEM</a>
+<a class="menuItem" href="<%= request.getContextPath()%>/expense/addExpense.jsp">VIEW ITEMS</a>
+<a class="menuItem" href="<%= request.getContextPath()%>/expense/addExpense.jsp">MODIFY ITEM</a>
+<a class="menuItem" href="<%= request.getContextPath()%>/expense/addExpense.jsp">DELETE ITEM</a>
 </div>
 
-<div id="customerGroupMenu" class="menu">
-<a class="menuItem" href="<%=request.getContextPath()%>/contacts/addContact.jsp">CustomerGroup</a>
-<a class="menuItem" href="blank.html">UpdateCustomerGroup</a>
-<a class="menuItem" href="blank.html">Delete CustomerGroup</a>
-<a class="menuItem" href="<%=request.getContextPath()%>/getallcontacts.spring">SearchCustomerGroup</a>
-</div>
 
 <div id="taskMenu" class="menu">
 <a class="menuItem" href="<%=request.getContextPath()%>/contacts/addContact.jsp">TaskInfoView</a>
-<a class="menuItem" href="blank.html">ProcessCreditFileTask</a>
-<a class="menuItem" href="blank.html">ViewHistoryRunsTask</a>
+<a class="menuItem" href="blank.html">Add Task</a>
+<a class="menuItem" href="blank.html">View Task History</a>
 </div>
 
 <div id="profileMenu" class="menu">
 <a class="menuItem" href="changePasswordDisplay.action">ChangePassword</a>
 </div>
 
-<div id="toolsMenu" class="menu"
-     onmouseover="menuMouseover(event)">
-
+<div id="toolsMenu" class="menu"  onmouseover="menuMouseover(event)">
 <a class="menuItem" href="<%=request.getContextPath()%>/post/createPost.jsp">Create post</a>
 <a class="menuItem" href="blank.html">Update Post</a>
-
 <a class="menuItem" href="blank.html">Delete Post</a>
 <a class="menuItem" href="<%=request.getContextPath()%>/viewposts.spring">View All Posts</a>
 </div>
+
 <div id="logoutMenu" class="menu"     onmouseover="menuMouseover(event)"> <a class="menuItem" href="logout.action">LogOut</a>
 </div>
 <hr />

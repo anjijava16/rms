@@ -2,6 +2,8 @@ package com.iwinner.rms.factory;
 
 import com.iwinner.rms.dao.AuditStartUpDaoIF;
 import com.iwinner.rms.dao.AuditStartUpDaoImpl;
+import com.iwinner.rms.dao.LoginDaoIF;
+import com.iwinner.rms.dao.LoginDaoImpl;
 
 /**
  * The class IRPCDaoFactory explain application about it is communicating with
@@ -13,13 +15,18 @@ import com.iwinner.rms.dao.AuditStartUpDaoImpl;
  * @since Nov 4th,2014
  * 
  */
-public class IRPCDaoFactory {
+public class DaoFactory {
 	private static AuditStartUpDaoIF startUpDaoIF = null;
+	private static LoginDaoIF loginDaoIF = null;
 	static {
 		startUpDaoIF = new AuditStartUpDaoImpl();
+		loginDaoIF=new LoginDaoImpl();
 	}
 
 	public static AuditStartUpDaoIF getStartUpDao() {
 		return startUpDaoIF;
+	}
+	public static LoginDaoIF getLoginDaoFactory() {
+		return loginDaoIF;
 	}
 }

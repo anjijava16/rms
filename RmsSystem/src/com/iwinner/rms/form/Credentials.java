@@ -1,16 +1,17 @@
 package com.iwinner.rms.form;
 
 public class Credentials {
-	private final String user;
+	private final String username;
 	private final String password;
 
-	public Credentials(String user, String password) {
-		this.user = user;
+	public Credentials(String username, String password) {
+		super();
+		this.username = username;
 		this.password = password;
 	}
 
-	public String getUser() {
-		return user;
+	public String getUsername() {
+		return username;
 	}
 
 	public String getPassword() {
@@ -23,7 +24,8 @@ public class Credentials {
 		int result = 1;
 		result = prime * result
 				+ ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result
+				+ ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 
@@ -41,10 +43,10 @@ public class Credentials {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (user == null) {
-			if (other.user != null)
+		if (username == null) {
+			if (other.username != null)
 				return false;
-		} else if (!user.equals(other.user))
+		} else if (!username.equals(other.username))
 			return false;
 		return true;
 	}

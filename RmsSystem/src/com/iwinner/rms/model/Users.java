@@ -191,4 +191,21 @@ public class Users {
 		this.passPasswords = passPasswords;
 	}
 
+	@Override
+	public String toString() {
+		return "Users [username=" + username + ", password=" + password
+				+ ", userId=" + userId + ", lastModifiedTime="
+				+ lastModifiedTime + ", lastUpdatedBy=" + lastUpdatedBy
+				+ ", accountStatus=" + accountStatus + ", userComments="
+				+ userComments + ", consecutiveLoginFailures="
+				+ consecutiveLoginFailures + ", email=" + email
+				+ ", expirationDate=" + expirationDate + ", expirePassword="
+				+ expirePassword + ", fullName=" + fullName + ", lastLogin="
+				+ lastLogin + ", lastPasswordChangedDate="
+				+ lastPasswordChangedDate + ", phone=" + phone + ", role="
+				+ role + ", passPasswords=" + passPasswords + "]";
+	}
+
+	
+	
 }

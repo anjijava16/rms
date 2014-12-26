@@ -13,7 +13,7 @@ import com.iwinner.rms.service.AuditStartUpServiceImpl;
  * @since Nov 4th,2014
  * 
  */
-public class IRPCServiceFactory {
+public class ServiceFactory {
 	private static AuditStartUpServiceIF startUpServiceIF = null;
 	static {
 		startUpServiceIF = new AuditStartUpServiceImpl();

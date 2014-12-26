@@ -1,6 +1,7 @@
 package com.iwinner.rms.dao;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.hibernate.Session;
@@ -49,10 +50,16 @@ public class RegisterDaoImpl implements RegisterDaoIF {
 	}
 	public static Date expireDate(){
 		Date date=new Date();
-		return date;
+		Calendar cal=Calendar.getInstance();
+		cal.add(Calendar.DAY_OF_MONTH, 60);
+		Date ds=cal.getTime();
+		return ds;
 	}
 	
 	public static void main(String[] args) {
+		
+		
+	
 		RegisterDaoImpl rD=new RegisterDaoImpl();
 		try {
 			Integer newUser=rD.registerUser(new Users());

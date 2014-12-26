@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.iwinner.rms.expections.ServiceException;
-import com.iwinner.rms.factory.IRPCServiceFactory;
+import com.iwinner.rms.factory.ServiceFactory;
 import com.iwinner.rms.helper.IdGenerator;
 import com.iwinner.rms.model.Audit;
 import com.iwinner.rms.service.AuditStartUpServiceIF;
@@ -94,7 +94,7 @@ public class AuditStartUpServlet extends HttpServlet {
 		vForm.setVistorranId(IdGenerator.getId());
 		vForm.setViewDateAndTime(viewTime);
 		vForm.setOsName(osName);
-		AuditStartUpServiceIF startUpServiceIF=IRPCServiceFactory.getStartUpService();
+		AuditStartUpServiceIF startUpServiceIF=ServiceFactory.getStartUpService();
 		try {
 			startUpServiceIF.saveVistiorInfo(vForm);
 		} catch (ServiceException e) {

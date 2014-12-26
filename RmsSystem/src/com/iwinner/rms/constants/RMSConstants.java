@@ -37,5 +37,5 @@ public class RMSConstants {
 	
 	//DB Querys
 	public static String SELECT_USER_QUERY=CONFIG.getString("SELECT_USER_QUERY");
-	
+    public static String LOGIN_VERIFY_QUERY=CONFIG.getString("LOGIN_VERIFY_QUERY");	
 }

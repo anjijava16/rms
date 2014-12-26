@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Login - Streamezzo support</title>
+<title>Registration Module  System</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/dynCalendar.css" type="text/css" media="screen">
 <link rel="icon" href="<%=request.getContextPath()%>/images/icon/favicon.ico" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" type="text/css">
@@ -48,7 +48,7 @@ function validateForm(f)
         <tr>
           <td colspan="2" align="center">
             <!--<h3>Streamezzo support </h3>-->
- <h3>Recrement Process System</h3> 
+ <h3>Registration Module  System</h3> 
           </td>
         </tr>
       </table>

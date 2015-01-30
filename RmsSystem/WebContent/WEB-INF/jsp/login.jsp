@@ -13,31 +13,9 @@
 <body bgcolor="#FFFFFF" marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" onBeforeUnload="return handleClose()">
 
 
-<script language="JavaScript">
-<!--
-function validateForm(f)
-{
-   
-    if (isWhitespace(f.username.value)) {
-        alert('Please enter your first name.');
-        selectField(f, 'username');
-        return false;
-    }
-    if (isWhitespace(f.passwd.value)) {
-        errors[errors.length] = new Option('Password', 'password');
-    }
-    if (errors.length > 0) {
-        return false;
-    }
-}
-//-->
-</script>
 
-<!-- <div align="center">
-<img alt="Streamezzo Group" title="Streamezzo Group Logo" src="images/company_logo.png" />
-<img alt="ChangingWorlds" title="ChangingWorlds Logo" src="images/cw_logo.jpg">
-</div>
- -->
+
+
 <form name="login_form" onSubmit="javascript:return checkFormSubmission(this, 'validateForm');" method="post" action="login.do">
 <input type="hidden" name="cat" value="login">
 <input type="hidden" name="url" value="">
@@ -86,7 +64,7 @@ function validateForm(f)
         </tr>
         <tr align="center">
           <td colspan="2" bgcolor="#44abd4">
-            <input type="submit" name="Submit" value="Login" class="button">
+            <input type="submit" name="Submit" value="Login" id="login" class="button">
           </td>
         </tr>
         <tr align="center">

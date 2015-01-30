@@ -34,6 +34,26 @@ public class ItemInfo {
 	private String purchasePlace;
 	@Column(name = "UPDATE_BY")
 	private String updatedBy;
+	@Column(name = "USERNAME")
+	private String username;
+	@Column(name = "UPDATED_TIME")
+	private Timestamp updatedTime;
+
+	public Timestamp getUpdatedTime() {
+		return updatedTime;
+	}
+
+	public void setUpdatedTime(Timestamp updatedTime) {
+		this.updatedTime = updatedTime;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	public Integer getItemId() {
 		return itemId;

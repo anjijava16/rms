@@ -53,7 +53,7 @@ public class Users {
 	private String role;
 
 	@Column(name = "PAST_PASSWORDS")
-	private String passPasswords;
+	private String pastPasswords;
 
 	public String getUsername() {
 		return username;
@@ -183,12 +183,14 @@ public class Users {
 		this.role = role;
 	}
 
-	public String getPassPasswords() {
-		return passPasswords;
+	
+
+	public String getPastPasswords() {
+		return pastPasswords;
 	}
 
-	public void setPassPasswords(String passPasswords) {
-		this.passPasswords = passPasswords;
+	public void setPastPasswords(String pastPasswords) {
+		this.pastPasswords = pastPasswords;
 	}
 
 	@Override
@@ -203,7 +205,7 @@ public class Users {
 				+ expirePassword + ", fullName=" + fullName + ", lastLogin="
 				+ lastLogin + ", lastPasswordChangedDate="
 				+ lastPasswordChangedDate + ", phone=" + phone + ", role="
-				+ role + ", passPasswords=" + passPasswords + "]";
+				+ role + ", pastPasswords=" + pastPasswords + "]";
 	}
 
 	

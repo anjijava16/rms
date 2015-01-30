@@ -28,7 +28,6 @@ public class AuditStartUpDaoImpl implements AuditStartUpDaoIF {
 		    transaction.commit();
 	    	}
 	    }
-
 	public  Integer getMaxId()throws DaoException{
 		Session session=HibernateUtils.getSession();
 		Query query=session.createQuery("select Max(id) from  Audit");

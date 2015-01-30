@@ -1,6 +1,9 @@
 package com.iwinner.rms.dao;
 
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.beanutils.BeanUtils;
@@ -30,7 +33,81 @@ public class LoginDaoImpl implements LoginDaoIF {
     System.out.println(user.toString());
 		return user;
 	}
-
+	public boolean loginVerify(String username,String password) throws DaoException {
+		Session session=HibernateUtils.getSession();
+		boolean loginVerifyValue=false;
+		Query query=session.createQuery(RMSConstants.LOGIN_VERIFY_QUERY);
+		query.setString("USERNAME", username);
+		query.setString("PASSWORD", password);
+		Long checkValue=(Long)query.uniqueResult();
+		if(checkValue.intValue()==1){
+			loginVerifyValue=true;
+		}else{
+			loginVerifyValue=false;
+		}
+		return loginVerifyValue;
+	}
+	
+	public Integer lastLogin(String username)throws DaoException{
+		Integer lastLogin=RMSConstants.LAST_LOGIN_PROCESSING;
+		Session session=HibernateUtils.getSession();
+		Users user=(Users)session.get(Users.class,username);
+		user.setLastLogin(new Timestamp(new Date().getTime()));
+		return lastLogin;
+	}
+	
+	public String forgotPassword(String username,String password)throws DaoException{
+		String FORGOT_PASSWORD=RMSConstants.FORGOT_PASSWORD_PROCESSING;
+		Session session=HibernateUtils.getSession();
+		session.beginTransaction().begin();
+		Users user=(Users)session.get(Users.class,username);
+		if(user!=null){
+			user.setExpirationDate(new Date());
+			user.setLastModifiedTime(new Timestamp(new Date().getTime()));
+			user.setPastPasswords(user.getPastPasswords());
+			user.setPassword(password);
+			session.update(user);
+			session.beginTransaction().commit();
+			FORGOT_PASSWORD=RMSConstants.FORGOT_PASSWORD_CHANGED;
+		}else{
+			FORGOT_PASSWORD=RMSConstants.FORGOT_PASSWORD_INVALID_USER;
+		}
+		
+		return FORGOT_PASSWORD;
+	}
+	
+	public String resetPassword(String username,String password)throws DaoException{
+		String RESET_PASSWORD=RMSConstants.RESET_PASSWORD_PROCESSING;
+		Session session=HibernateUtils.getSession();
+		session.beginTransaction().begin();
+		Users user=(Users)session.get(Users.class,username);
+		try{
+			user.setExpirationDate(new Date());
+			user.setLastModifiedTime(new Timestamp(new Date().getTime()));
+			user.setPastPasswords(user.getPastPasswords());
+			user.setPassword(password);
+			session.update(user);
+			session.beginTransaction().commit();
+			RESET_PASSWORD=RMSConstants.RESET_PASSWORD_CHANGED;
+		}catch(Exception sql){
+			session.beginTransaction().rollback();
+			RESET_PASSWORD=RMSConstants.RESET_PASSWORD_ERROR;
+		}
+		return RESET_PASSWORD;
+	}
+	public static boolean userNameVerify(String username) throws DaoException {
+		Session session=HibernateUtils.getSession();
+		boolean loginVerifyValue=false;
+		Query query=session.createQuery(RMSConstants.SELECT_USER_NAME_CHECK);
+		query.setString("USERNAME", username);
+		Long checkValue=(Long)query.uniqueResult();
+		if(checkValue.intValue()==1){
+			loginVerifyValue=true;
+		}else{
+			loginVerifyValue=false;
+		}
+		return loginVerifyValue;
+	}
 	
 	public static void main(String[] args) {
 		LoginDaoImpl ld=new LoginDaoImpl();
@@ -44,19 +121,5 @@ public class LoginDaoImpl implements LoginDaoIF {
 		}
 		System.out.println();
 	}
-	public boolean loginVerify(String username,String password) throws DaoException {
-		Session session=HibernateUtils.getSession();
-		boolean loginVerifyValue=false;
-		Query query=session.createQuery(RMSConstants.LOGIN_VERIFY_QUERY);
-		query.setString("USERNAME", username);
-		query.setString("PASSWORD", password);
-		Long checkValue=(Long)query.uniqueResult();
-		System.out.println(checkValue);
-		if(checkValue.intValue()==1){
-			loginVerifyValue=true;
-		}else{
-			loginVerifyValue=false;
-		}
-		return loginVerifyValue;
-	}
+	
 }

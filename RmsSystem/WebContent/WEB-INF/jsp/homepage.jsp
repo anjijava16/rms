@@ -679,7 +679,7 @@ function getPageOffsetTop(el) {
 
 <div>
     <div class="div1">Registration Module  System</div>
-    <div class="div2"> <span>Welcome : <font color='red'><c:out value="${userName}"></c:out></font> [ <a href="profileForm.action">My Profile</a> | <a href="#">Help</a> | <a href="#">About</a> ]</span></div>
+    <div class="div2"> <span>Welcome : <font color='red'><c:out value="${userName}"></c:out></font> [ <a href="homeServlet.action">My Profile</a> | <a href="#">Help</a> | <a href="#">About</a> ]</span></div>
  </div>
         </div>
 <div id="demoBox">
@@ -738,12 +738,11 @@ Logout</a>
 
 <div id="userInfoMenu" class="menu"
      onmouseover="menuMouseover(event)">
-<a class="menuItem" href="createUserForm.action">CreateUser</a>
-<a class="menuItem" href="blank.html">EditUser</a>
-<a class="menuItem" href="blank.html">SearchUser</a>
-<a class="menuItem" href="Doctors.action">DeleteUser</a>
-<a class="menuItem" href="askAppoint.action">ModifyUser</a>
-<a class="menuItem" href="askAppoint.action">ModifyUserPasswrd</a>
+<a class="menuItem" href="addItem.action">CreateUser</a>
+<a class="menuItem" href="viewItem.action">SearchUser</a>
+<a class="menuItem" href="viewAllItems.action">View All User</a>
+<a class="menuItem" href="deleteItem.action">DeleteUser</a>
+<a class="menuItem" href="updateItem.action">UpdateUser</a>
 </div>
 <div id="reportMenu" class="menu"
      onmouseover="menuMouseover(event)">
@@ -767,10 +766,13 @@ Logout</a>
 
 <div id="expenseInfo" class="menu"
      onmouseover="menuMouseover(event)">
-<a class="menuItem" href="<%= request.getContextPath()%>/expense/addExpense.jsp">Add ITEM</a>
-<a class="menuItem" href="<%= request.getContextPath()%>/expense/addExpense.jsp">VIEW ITEMS</a>
-<a class="menuItem" href="<%= request.getContextPath()%>/expense/addExpense.jsp">MODIFY ITEM</a>
-<a class="menuItem" href="<%= request.getContextPath()%>/expense/addExpense.jsp">DELETE ITEM</a>
+
+<a class="menuItem" href="addItem.action">Add ITEM</a>
+<!-- <a class="menuItem" href="viewItem.action">SearchUser</a> -->
+<a class="menuItem" href="viewAllItems.action">VIEW ITEMS</a>
+<a class="menuItem" href="deleteItem.action">DELETE ITEM</a>
+<a class="menuItem" href="updateItem.action">MODIFY ITEM</a>
+
 </div>
 
 

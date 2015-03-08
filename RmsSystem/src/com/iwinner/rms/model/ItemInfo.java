@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ITEM_INFO")
-public class ItemInfo {
+public class ItemInfo implements java.io.Serializable {
 	@Id
 	@Column(name = "ITEM_ID")
 	private Integer itemId;
@@ -38,6 +38,16 @@ public class ItemInfo {
 	private String username;
 	@Column(name = "UPDATED_TIME")
 	private Timestamp updatedTime;
+	@Column(name = "COMMENTS")
+	private String comments;
+
+	public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
 
 	public Timestamp getUpdatedTime() {
 		return updatedTime;
@@ -133,6 +143,17 @@ public class ItemInfo {
 
 	public void setUpdatedBy(String updatedBy) {
 		this.updatedBy = updatedBy;
+	}
+
+	@Override
+	public String toString() {
+		return "ItemInfo [itemId=" + itemId + ", itemName=" + itemName
+				+ ", itemTakenPerson=" + itemTakenPerson + ", price=" + price
+				+ ", takingPlace=" + takingPlace + ", personsWith="
+				+ personsWith + ", date=" + date + ", takenTime=" + takenTime
+				+ ", purchasePlace=" + purchasePlace + ", updatedBy="
+				+ updatedBy + ", username=" + username + ", updatedTime="
+				+ updatedTime + "]";
 	}
 
 }

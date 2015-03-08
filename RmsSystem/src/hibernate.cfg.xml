@@ -11,21 +11,33 @@
 			name="connection.username">root</property> <property name="connection.password">root</property> 
 			<property name="connection.driver_class">com.mysql.jdbc.Driver</property> -->
 
-		<property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+		<!-- Staging DB Info -->
+<!-- 		 <property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
 		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
 		<property name="connection.username">rms</property>
 		<property name="connection.password">rms</property>
 		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		Echo all executed SQL to stdout
+		<property name="show_sql">true</property>
+		Drop and re-create the database schema on startup
+		<property name="hbm2ddl.auto">update</property> -->
+         
+         <!-- Production DB Info -->
+        <property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+		<property name="connection.username">rms_pro</property>
+		<property name="connection.password">rms_pro</property>
+		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
 		<!-- Echo all executed SQL to stdout -->
 		<property name="show_sql">true</property>
-
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hbm2ddl.auto">update</property>
-        
-   <!-- <mapping resource="/com/st/mapping/Floor.hbm.xml"/> -->
-   <mapping class="com.iwinner.rms.model.Audit"></mapping>
-   <mapping class="com.iwinner.rms.model.Users"></mapping>
-   <mapping class="com.iwinner.rms.model.ItemInfo"></mapping>
+	   <!-- <mapping resource="/com/st/mapping/Floor.hbm.xml"/> -->
+   		<mapping class="com.iwinner.rms.model.Audit"></mapping>
+   		<mapping class="com.iwinner.rms.model.Users"></mapping>
+   		<mapping class="com.iwinner.rms.model.ItemInfo"></mapping>
+   		<mapping class="com.iwinner.rms.model.UserRole"></mapping>
+   		<mapping class="com.iwinner.rms.model.TaskInfo"></mapping>
     </session-factory>
 
 </hibernate-configuration>

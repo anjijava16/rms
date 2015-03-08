@@ -7,7 +7,7 @@ import com.iwinner.rms.model.ItemInfo;
 
 public interface ItemDaoIF {
 	public String addItem(ItemInfo itemInfo) throws DaoException;
-
+	
 	public Integer deleteItemId(Integer itemId) throws DaoException;
 
 	public ItemInfo viewItemInfo(Integer itemId) throws DaoException;
@@ -16,4 +16,5 @@ public interface ItemDaoIF {
 
 	public Integer updateItem(ItemInfo itemInfo) throws DaoException;
 
+	public List<Integer> getItemIds() throws DaoException;
 }

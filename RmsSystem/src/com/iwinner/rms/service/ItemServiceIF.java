@@ -29,4 +29,6 @@ public interface ItemServiceIF {
 
 	public Integer updateUserItem(ItemInfo itemInfo, String username)
 			throws ServiceException;
+	
+	public List<Integer> getItemIds()throws ServiceException;
 }

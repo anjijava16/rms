@@ -2,7 +2,7 @@ package com.iwinner.rms.utils;
 
 import java.util.List;
 
-import com.iwinner.rms.dao.HomePageDaoImpl;
+import com.iwinner.rms.dao.impl.HomePageDaoImpl;
 import com.iwinner.rms.expections.DaoException;
 import com.iwinner.rms.expections.ServiceException;
 import com.iwinner.rms.factory.ServiceFactory;

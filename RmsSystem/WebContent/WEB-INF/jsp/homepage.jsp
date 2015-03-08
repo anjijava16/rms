@@ -5,8 +5,22 @@
 <!--* Copyright 2000-2004 by Mike Hall                                     *-->
 <!--* Please see http://www.brainjar.com for terms of use.                 *-->
 <!--************************************************************************-->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.*"%>
+<%@ page import="com.iwinner.rms.model.*"%>
+ <% 
+ if(session.getAttribute("userName")==null)
+{
+	session.invalidate(); %>
+	<jsp:forward page="/login.jsp?errorMessage=Your Session expired,Please login again" />
+	<% 
+}
+	else
+	{ %>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <link type="text/css" rel="stylesheet"
 	href="<%=request.getContextPath()%>/Styles/Main_Style.css" />
@@ -27,14 +41,20 @@ div.menu a.menuItem {
 }
 .div1 {
     float: left;
-    background-color: black;
-    color: rgb(0, 220, 98);
+/*     background-color: yellow;
+ */    color: rgb(0, 220, 98);
     font-size: 30px;
+    
 }
+.div21{
+    float: center;
+    background-color: yellow;
 
+}
 .div2 {
     float:right;
     text-align: right;
+    background-color:yellow;
 }
 .dv4{
     background-color: blue;
@@ -159,7 +179,7 @@ height:400px;
 {
     width:1000px;
     height:35px;
-    background-color:#fff;
+    /* background-color:#fff; */
 	text-align:right;
 	margin-left: auto
 }
@@ -674,9 +694,10 @@ function getPageOffsetTop(el) {
 }
 //]]></script>
 </head>
-<body style="height:100%" id="content">
+<body style="height:100%" id="content" bgcolor='yellow'>
 <div id="top">
 
+<% String userRole=(String)session.getAttribute("userRole");%>
 <div>
     <div class="div1">Registration Module  System</div>
     <div class="div2"> <span>Welcome : <font color='red'><c:out value="${userName}"></c:out></font> [ <a href="homeServlet.action">My Profile</a> | <a href="#">Help</a> | <a href="#">About</a> ]</span></div>
@@ -689,15 +710,27 @@ function getPageOffsetTop(el) {
 <div class="menuBar" style="width:95%;">
 <a class="menuButton"    href="#"    onclick="return buttonClick(event, 'homeNewMenu');" 
 onmouseover="buttonMouseover(event, 'homeNewMenu');">Home </a>
-
+<c:choose>
+<c:when test='${userRole=="ADMIN"}'>
+<%{ %>
 <a class="menuButton"    href=""    onclick="return buttonClick(event, 'userInfoMenu');" 
 onmouseover="buttonMouseover(event, 'userInfoMenu');">UserInformation</a>
 
-<a class="menuButton"    href=""    onclick="return buttonClick(event, 'expenseInfo');" 
-onmouseover="buttonMouseover(event, 'expenseInfo');">Expense Information</a>
+<a class="menuButton"    href=""    onclick="return buttonClick(event, 'userInfoMenu');" 
+onmouseover="buttonMouseover(event, 'userInfoMenu');">P*Expense Info</a>
 
+
+<%} %></c:when>
+</c:choose>
+<a class="menuButton"    href=""    onclick="return buttonClick(event, 'expenseInfo');" 
+onmouseover="buttonMouseover(event, 'expenseInfo');">Expense Info</a>
+<c:choose>
+<c:when test='${userRole=="ADMIN"}'>
+<%{ %>
 <a class="menuButton"    href=""    onclick="return buttonClick(event, 'taskMenu');" 
 onmouseover="buttonMouseover(event, 'taskMenu');">Tasks</a>
+<%} %></c:when>
+</c:choose>
 <a class="menuButton"  href=""  onclick="return buttonClick(event, 'reportMenu');"
     onmouseover="buttonMouseover(event, 'reportMenu');">Report System</a>
  <a class="menuButton"
@@ -707,10 +740,10 @@ onmouseover="buttonMouseover(event, 'taskMenu');">Tasks</a>
 >ContactsUs</a>
 
 <a class="menuButton"
-    href=""
+    href="othersServices.do"
     onclick="return buttonClick(event, 'profileMenu');"
     onmouseover="buttonMouseover(event, 'profileMenu');"
->Profile</a>
+>Others Services</a>
 
 <a class="menuButton"
     href=""
@@ -722,7 +755,7 @@ Logout</a>
 <!-- Main menus. -->
 <div id=contactUS class="menu"
      onmouseover="menuMouseover(event)">
-<a class="menuItem" href="contactUs.do">ContactUS</a>
+<a class="menuItem" href="underDev.action">ContactUS</a>
 
 </div>
 
@@ -738,18 +771,16 @@ Logout</a>
 
 <div id="userInfoMenu" class="menu"
      onmouseover="menuMouseover(event)">
-<a class="menuItem" href="addItem.action">CreateUser</a>
-<a class="menuItem" href="viewItem.action">SearchUser</a>
-<a class="menuItem" href="viewAllItems.action">View All User</a>
-<a class="menuItem" href="deleteItem.action">DeleteUser</a>
-<a class="menuItem" href="updateItem.action">UpdateUser</a>
+<a class="menuItem" href="newUser.action">CreateUser</a>
+<a class="menuItem" href="searchUser.action">SearchUser</a>
+<a class="menuItem" href="viewUser.action">View All User</a>
+<a class="menuItem" href="deleteUser.action">DeleteUser</a>
+<a class="menuItem" href="updateUser.action">UpdateUser</a>
 </div>
 <div id="reportMenu" class="menu"
      onmouseover="menuMouseover(event)">
-<a class="menuItem" href="reports.action">DisconnectReconnectApprovalReport</a>
-<a class="menuItem" href="reports.action">RunApprovalsReport</a>
-<a class="menuItem" href="blank.html">ReadingHistoryReport</a>
-<a class="menuItem" href="<%=request.getContextPath()%>/viewshares.spring">CustomerDetailsReport</a>
+<a class="menuItem" href="reports.action">All Report</a>
+<a class="menuItem" href="reports.action">Single Report</a>
 </div>
 
 <div id="rateAction" class="menu"
@@ -777,13 +808,14 @@ Logout</a>
 
 
 <div id="taskMenu" class="menu">
-<a class="menuItem" href="<%=request.getContextPath()%>/contacts/addContact.jsp">TaskInfoView</a>
-<a class="menuItem" href="blank.html">Add Task</a>
-<a class="menuItem" href="blank.html">View Task History</a>
+<a class="menuItem" href="underDev.action">TaskInfoView</a>
+<a class="menuItem" href="addTaskRedirect.do">Add Task</a>
+<a class="menuItem" href="underDev.action">View Task History</a>
 </div>
 
 <div id="profileMenu" class="menu">
-<a class="menuItem" href="changePasswordDisplay.action">ChangePassword</a>
+<a class="menuItem" href="underDev.action">Currency Checking</a>
+<a class="menuItem" href="underDev.action">Pin Code Service</a>
 </div>
 
 <div id="toolsMenu" class="menu"  onmouseover="menuMouseover(event)">
@@ -798,3 +830,4 @@ Logout</a>
 <hr />
 </body>
 </html>
+<%} %>

@@ -44,15 +44,18 @@ public class HomeInformationServvlet extends HttpServlet {
      */
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	homeServideIF=ServiceFactory.getHomeInformation();
-    	String username="";
-    	Users users=null;
+    	String username=(String)request.getSession().getAttribute("userName");
+    	Users users=new Users();
     	try {
-			users=homeServideIF.profieInformation(username);
+			users=homeServideIF.profieInformation(username);//usersInfo
+			request.getSession().setAttribute("usersInfo", users);
+			request.getRequestDispatcher("/WEB-INF/jsp/profileInfo.jsp").forward(request, response);
+
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
-    	
     	System.out.println(users.toString());
     }
+    
 
 }

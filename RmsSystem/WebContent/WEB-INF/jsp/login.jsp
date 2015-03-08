@@ -1,86 +1,81 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.*"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Registration Module  System</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/dynCalendar.css" type="text/css" media="screen">
-<link rel="icon" href="<%=request.getContextPath()%>/images/icon/favicon.ico" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" type="text/css">
-<script language="javascript" src="<%=request.getContextPath()%>/js/browserSniffer.js"></script>
-<script language="JavaScript" src="<%=request.getContextPath()%>/js/global.js"></script>
-<script language="JavaScript" src="<%=request.getContextPath()%>/js/validation.js"></script>
-<script language="JavaScript" src="<%=request.getContextPath()%>/niftycube/niftycube.js"></script>
+<style type="text/css">
+body {
+	margin-left: auto width:   500px;
+	background-color: #EEEEEE
+}
+</style>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery.query-2.1.7.js"></script>
+<script>
+	$(document).ready(
+			function() {
+				$("#username").focus();
+				$("#login").click(
+						function() {
+							if ($.trim($("#username").val()) == '') {
+								alert("UserName is can't be empty ");
+								return false;
+							}
+							if ($.trim($("#password").val()) == '') {
+								alert("Password is Not Empty");
+								return false;
+							}
+/* 							console.log($("#password").val().length)
+							if ($("#password").val().length >= 6) {
+								alert("Please Enter Above 6 Chaaracters");
+								return false;
+							}
+ */							if ($("#password").val() == 'NULL'
+									|| $("#password").val() == 'null') {
+								alert("Password Can't be Null or null");
+								// alert($(this).val());
+								$("#password").focus();
+								return false;
+							}
+						});
+			});
+</script>
 </head>
+<body>
+	<form name="loginPage" id="loginPage" action="login.do" name="form"
+		method="POST" style="margin-top: 200px; margin-left: 300px">
+		<h2>
+			<p style="color: blue">Registration Management System</p>
+		</h2>
+		<%
+			String errorMessage = (String) request.getAttribute("errorMessage");
+		%>
+		<%
+			if (errorMessage != null) {
+		%>
+		<div style="color: #FF0000;"><%=errorMessage%></div>
+		<%
+			}
+		%>
+		<table>
+			<tr>
+				<td>User Id</td>
+				<td><input type="text" name="username" id="username"
+					maxlength="100" /></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" name="password" id="password"
+					maxlength="16" /></td>
+			</tr>
+		</table>
+		<input type="submit" name="rmsPortal" id="login" value='Login' />&nbsp;&nbsp;
+		<input type="submit" name="rmsPortal" value='New Registration'>&nbsp;&nbsp;
+		<input type="submit" name="rmsPortal" value='Forgot Password'>&nbsp;&nbsp;
 
-<body bgcolor="#FFFFFF" marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" onBeforeUnload="return handleClose()">
-
-
-
-
-
-<form name="login_form" onSubmit="javascript:return checkFormSubmission(this, 'validateForm');" method="post" action="login.do">
-<input type="hidden" name="cat" value="login">
-<input type="hidden" name="url" value="">
-<table align="center" width="900" border="0" cellspacing="0" cellpadding="1" >
-  <tr>
-    <td>
-      <table  width="100%" border="0" cellspacing="0" cellpadding="4">
-        <tr>
-          <td colspan="2" align="center">
-            <!--<h3>Streamezzo support </h3>-->
- <h3>Registration Module  System</h3> 
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<div class="login_table" width="400" align="center">
-<table align="center" width="400" border="0" cellspacing="0" cellpadding="1">
-  <tr>
-    <td>
-      <table bgcolor="#FFFFFF" width="100%" border="0" cellspacing="0" cellpadding="4">
-        <tr>
-          <td colspan="2" bgcolor="#44abd4"><img src="<%=request.getContextPath()%>/images/blank.gif" width="1" height="5"></td>
-        </tr>
-               <!--    
-                 <tr>
-          <td colspan="2" align="center" class="error" bgcolor="#44abd4">
-            <b>
-                          Thank you, you are now logged out of Streamezzo Support.
-                        </b>
-          </td>
-        </tr>
-           -->
-                <tr>
-          <td align="right" width="40%" class="default_white" bgcolor="#44abd4"><b>Email Address:</b></td>
-          <td width="60%" bgcolor="#44abd4">
-            <input accessKey="e" class="default" type="text" name="username" value="" size="30">
-            <img id="error_icon_email" style="visibility: hidden;" src="<%=request.getContextPath()%>/images/icons/error.gif" alt="error condition detected" title="error condition detected" width="1" height="1">          </td>
-        </tr>
-        <tr>
-          <td align="right" width="40%" class="default_white" bgcolor="#44abd4"><b>Password:</b></td>
-          <td width="60%" bgcolor="#44abd4">
-            <input accessKey="p" class="default" type="password" name="password" size="20" maxlength="32">
-            <img id="error_icon_passwd" style="visibility: hidden;" src="<%=request.getContextPath()%>/images/icons/error.gif" alt="error condition detected" title="error condition detected" width="1" height="1">          </td>
-        </tr>
-        <tr align="center">
-          <td colspan="2" bgcolor="#44abd4">
-            <input type="submit" name="Submit" value="Login" id="login" class="button">
-          </td>
-        </tr>
-        <tr align="center">
-          <td colspan="2" class="default_white" bgcolor="#44abd4">
-            <a class="white_link" href="forgot.action">I Forgot My Password</a>&nbsp;&nbsp;
-            <a class="white_link" href="newUser.action">Signup for an Account</a>          </td>
-        </tr>
-        <tr>
-          <td bgcolor="#44abd4" colspan="2" align="center" class="default_white">
-            <b>* Requires support for cookies and javascript in your browser</b>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-</div>
-</form>
-
+	</form>
+</body>
+</html>
